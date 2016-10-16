@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Transactions{% endblock %}
+{% block content %}
+
+
+<h2>Transactions</h2>
+
+<table class="table">
+{% for transaction in transactions %}
+    <tr>
+        <td>
+            {% if transaction.category %}
+                <i class="fa fa-{{ transaction.category.icon }}" aria-hidden="true"></i>
+            {% endif %}
+        </td>
+        <td><a href="{{ transaction.url }}">{{ transaction.description }}</a></td>
+        <td>{{ transaction.date|date:"d M Y" }}</td>
+        <td>{{ transaction.more }}</td>
+        <td align="right">{{ transaction.amount }}</td>
+        <td align="right">{{ transaction.balance }}</td>
+        <td align="right">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Dropdown
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </div>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}
+
+
+{% block javascript %}
+<script>
+$(function() {
+    
+});
+</script>
+{% endblock%}
